@@ -13,3 +13,13 @@ Python script that:
 3. Operates off digitalocean, for 10 dollars a month after delivery is complete (will require coding persistence, prior to deployment on DigitalOcean, I will ask for payment for the month in advance).
 
 ```
+
+Links:
+``` 
+https://github.com/RomelTorres/alpha_vantage
+```
+
+API KEY
+```
+6N6NCHHOY72NXZ4T
+```
