@@ -3,6 +3,9 @@ import nyselib
 import ast
 import time
 
+
+bot_token = '791747943:AAFBMAXrJV_oIRQt6GmHfbUMaykyki6Sh2c'
+
 symbols = ast.literal_eval(open('symbols.txt', 'r').read())
 
 
