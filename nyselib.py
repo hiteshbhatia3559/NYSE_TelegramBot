@@ -38,3 +38,4 @@ def get_four_hour_rsi(symbol):
     ti = TechIndicators(key=API_KEY, output_format='pandas')
     data, meta_data = ti.get_rsi(symbol=symbol, interval='60min', time_period=14)
     return int(data.tail(1).iloc[0]['RSI'])
+
