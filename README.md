@@ -18,8 +18,3 @@ Links:
 ``` 
 https://github.com/RomelTorres/alpha_vantage
 ```
-
-API KEY
-```
-6N6NCHHOY72NXZ4T
-```
