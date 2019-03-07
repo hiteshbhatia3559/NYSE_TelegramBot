@@ -2,10 +2,11 @@ from multiprocessing import Process
 import nyselib
 import ast
 import requests
+import time
 
 bot_token = '791747943:AAFBMAXrJV_oIRQt6GmHfbUMaykyki6Sh2c'
 
-url = "https://api.telegram.org/bot" + bot_token
+url = "https://api.telegram.org/bot" + bot_token + '/'
 
 
 def send_mess(text):
@@ -19,6 +20,7 @@ symbols = ast.literal_eval(open('symbols.txt', 'r').read())
 
 def one_minute():
     while 1:
+
         for symbol in symbols:
             try:
                 rsi = nyselib.get_one_minute_rsi(symbol)
@@ -37,6 +39,7 @@ def one_minute():
 
 def five_minute():
     while 1:
+
         for symbol in symbols:
             try:
                 rsi = nyselib.get_five_minute_rsi(symbol)
@@ -54,6 +57,7 @@ def five_minute():
 
 def fifteen_minute():
     while 1:
+
         for symbol in symbols:
             try:
                 rsi = nyselib.get_fifteen_minute_rsi(symbol)
@@ -71,6 +75,7 @@ def fifteen_minute():
 
 def thirty_minute():
     while 1:
+
         for symbol in symbols:
             try:
                 rsi = nyselib.get_thirty_minute_rsi(symbol)
@@ -88,6 +93,7 @@ def thirty_minute():
 
 def one_day():
     while 1:
+
         for symbol in symbols:
             try:
                 rsi = nyselib.get_one_day_rsi(symbol)
@@ -104,8 +110,13 @@ def one_day():
 
 
 if __name__ == '__main__':
-    Process(target=one_minute).start()
-    Process(target=five_minute).start()
-    Process(target=fifteen_minute).start()
-    Process(target=thirty_minute).start()
-    Process(target=one_day).start()
+    p = []
+    i = 0
+    functions = [one_minute,fifteen_minute,fifteen_minute,thirty_minute,one_day]
+    for item in functions:
+        p.append(Process(target=item))
+        p[i].start()
+        i+=1
+        if i==len(functions)-1:
+            for j in p:
+                j.join()
